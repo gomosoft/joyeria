@@ -110,7 +110,7 @@ class wcomerce_api{
     	  $query = "SELECT * FROM `" . tb_prefix ."term_taxonomy` WHERE taxonomy = 'product_cat'";
 
     	  if(isset($_GET['id']))
-    	  	$query .= " AND id = {$_GET['id']}";
+    	  	$query .= " AND term_id = {$_GET['id']}";
 
     	  $rs = $this->db->query($query);
     	  $cats = array();

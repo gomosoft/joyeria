@@ -12,7 +12,7 @@ var carousel_ = function (app){
 
       		 	 console.log(rs);
 
-                  $scope.categorys = rs;
+                  $scope.categorys = rs.data;
 
 
               }); 
@@ -23,9 +23,20 @@ var carousel_ = function (app){
 
       	  dataFact.products(function(rs){
 
-      	  	  $scope.products = rs;
+      	  	  $scope.products = rs.data;
 
       	  }, category || null);
+
+      }
+
+
+      $scope.getProduct = function(id){
+
+         dataFact.products(function(rs){
+
+               $scope.product = rs.data;
+
+           }, id);
 
       }
 
@@ -38,7 +49,7 @@ var carousel_ = function (app){
 
        this.categorys = function(callback, error){
 
-           $http.get("categorys.json")
+           $http.get('app/api/?cats')
            .success(callback)
            .error(error || function(err){console.log(error);});
 
@@ -46,8 +57,20 @@ var carousel_ = function (app){
 
        this.products = function(callback, category, error){
 
+           var category = category ? '&id='+category : '';
 
-       	   $http.get("categorys.json")
+       	   $http.get('app/api/?cats' + category + '&prods')
+           .success(callback)
+           .error(error || function(err){console.log(error);});
+
+
+       }
+
+
+        this.product = function(callback, id){
+
+
+           $http.get('app/api/?products&id='+ id)
            .success(callback)
            .error(error || function(err){console.log(error);});
 
