@@ -1,0 +1,65 @@
+
+
+<div class="inicio sec" ng-controller='carouselCtrl' ng-init="getCategorys()" >
+
+	<div >
+		<ul id="carousel">
+
+		
+			<li ng-model="categorys" ng-repeat="cat in categorys">
+			
+				  <a href="{{cat.url}}">
+				  	 <img src="{{cat.img}}" alt="" >
+				  </a>
+				  <p class="title">{{cat.title}}</p>
+				  <p class="description">{{cat.description}}</p>
+			</li>			  
+						
+		</ul>
+
+
+		<div class="desc-box" id="text">
+        	<h2 id="selected-title">Title</h2>
+            <p id="selected-description">Description of the selected item</p>
+        </div>
+	</div>
+</div>
+
+<script src="js/jquery.mousewheel.js"></script>
+<script type="text/javascript">
+
+function descripcion(event) {
+
+	  if(!event.data) return;
+	
+		$('#text #selected-title').html(event.data.title);
+		$('#text #selected-description').html(event.data.description);
+
+	}
+
+
+jQuery(document).ready(function($){
+	carousel = $('#carousel').carousel({width: 870, 
+										height: 300, 
+										itemWidth:120, 
+										horizontalRadius:270, 
+										verticalRadius:85, 
+										resize:false, 
+										scaleRatio:0.4,
+										autoScroll:true, 
+										mouseScroll: true,
+										mouseWheel: true,
+										linkTarget : '_self',
+										itemSelect: descripcion,										
+        								itemMouseOver: descripcion,										
+										itemClick: function(e){
+											console.log(e);
+										}
+										});
+											 
+		carousel.scrollToItem(0);
+
+
+
+	});
+</script>
