@@ -151,11 +151,8 @@ class wcomerce_api{
     	  			     $products = $this->db->query($query) or die($db->error);
     	  			     $prods = array();
 
-    	  			        while($row_ = $products->fetch_assoc())
-    	  			        	{
+    	  			        while($row_ = $products->fetch_assoc())    	  			   
     	  			        		$prods[] = $this->getProduct($row_['object_id']);
-
-    	  			        	}
 
     	  			            $row['products'] = $prods;
 
@@ -170,7 +167,7 @@ class wcomerce_api{
 
 
     	  				
-    	  				$cats[] = $metas_;
+    	  				$cats[] = $metas_[0];
 
     	  			}
 

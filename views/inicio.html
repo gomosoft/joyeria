@@ -9,9 +9,9 @@
 			<li ng-model="categorys" ng-repeat="cat in categorys">
 			
 				  <a href="{{cat.url}}">
-				  	 <img src="{{cat.img}}" alt="" >
+				  	 <img src="app/api?image&id={{cat.img_id}}" alt="" >
 				  </a>
-				  <p class="title">{{cat.title}}</p>
+				  <p class="title">{{cat.name}}</p>
 				  <p class="description">{{cat.description}}</p>
 			</li>			  
 						

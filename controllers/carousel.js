@@ -6,6 +6,7 @@ var carousel_ = function (app){
    	$scope.categorys = [];
    	$scope.products = [];
 
+
       $scope.getCategorys = function(){
 
       		 $http.get('app/api/?cats').success(function(rs){
