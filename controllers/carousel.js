@@ -8,9 +8,9 @@ var carousel_ = function (app){
 
       $scope.getCategorys = function(){
 
-      		 dataFact.categorys(function(rs){
+      		 $http.get('app/api/?cats').success(function(rs){
 
-      		 	 console.log(rs);
+      		 	     console.log(rs);
 
                   $scope.categorys = rs.data;
 

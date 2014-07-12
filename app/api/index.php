@@ -126,6 +126,7 @@ class wcomerce_api{
 
     	  			$query = "SELECT * FROM `" . tb_prefix . "terms` WHERE term_id = {$row['term_id']}";
     	  			$metas = $this->db->query($query) or die($db->error);
+    	  			$desc = $row['description'];
 
     	  			if($metas->num_rows > 0){
     	  				
@@ -142,6 +143,7 @@ class wcomerce_api{
     	  						$thumb = $thumb->fetch_assoc();
 
     	  						$row['img_id'] = $thumb['meta_value'];
+    	  						$row['description'] = $desc;
                        
                         if(isset($_GET['prods'])){
 
